@@ -1,11 +1,23 @@
 class AppointmentsController < ApplicationController
+  
   def index
+    @appointments = current_user.appointments
+  end
+  
+  def show
   end
 
   def new
+    @appointment = current_user.appointments.new
   end
 
   def create
+    @appointment = current_user.appointments.build(appointment_params)
+    if @appointment.save
+      redirect_to client_appointment_url(id: @appointment.id), notice: 'Appointment was successfully created.'
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def edit
@@ -16,4 +28,9 @@ class AppointmentsController < ApplicationController
 
   def destory
   end
+
+  private
+    def appointment_params
+      params.require(:appointment).permit(:client_id, :scheduled_at, :location, :status)
+    end
 end

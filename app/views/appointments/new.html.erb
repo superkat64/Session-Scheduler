@@ -1,2 +1,4 @@
-<h1>Appointments#new</h1>
-<p>Find me in app/views/appointments/new.html.erb</p>
+<%# app/views/appointments/new.html.erb %>
+<h1>New Appointment</h1>
+<%= render 'form', appointment: @appointment %>
+<%= link_to 'Back', :back %>

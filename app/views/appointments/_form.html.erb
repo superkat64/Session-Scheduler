@@ -1,0 +1,26 @@
+<%# app/views/appiointments/_form.html.erb %>
+<%= form_with(model: appointment, url: client_appointments_path, local: true) do |f| %>
+  <% if appointment.errors.any? %>
+    <div id="error_explanation" style="color: red;">
+      <h2><%= pluralize(appointment.errors.count, "error") %> prohibited this appointment from being saved:</h2>
+        <ul>
+            <% appointment.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+            <% end %>
+        </ul>
+    </div>
+  <% end %>
+    <div class="field">
+        <%= f.label :client_id %>
+        <%= f.collection_select :client_id, current_user.clients, :id, :full_name, prompt: "Select a Client" %>
+    </div>
+    
+    <div class="field">
+        <%= f.label :scheduled_at %>
+        <%= f.datetime_select :scheduled_at %>
+    </div>
+    
+    <div class="actions">
+        <%= f.submit %>
+    </div>
+<% end %>
