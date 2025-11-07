@@ -8,7 +8,8 @@ class AppointmentsController < ApplicationController
   end
 
   def new
-    @appointment = current_user.appointments.new
+    @client = current_user.clients.find(params[:client_id])
+    @appointment = current_user.appointments.new(client: @client)
   end
 
   def create
