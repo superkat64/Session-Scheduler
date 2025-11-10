@@ -1,38 +1,40 @@
 <%# app/views/clients/_form.html.erb %>
 <%= form_with(model: client, local: true) do |f| %>
-    <% if client.errors.any? %>
-        <div id="error_explanation" style="color: red;">
-        <h2><%= pluralize(client.errors.count, "error") %> prohibited this client from being saved:</h2>
+  <% if client.errors.any? %>
+    <div id="error_explanation" style="color: red;">
+      <h2><%= pluralize(client.errors.count, "error") %> prohibited this client from being saved:</h2>
+      <ul>
+        <% client.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
     
-        <ul>
-            <% client.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-            <% end %>
-        </ul>
-        </div>
-    <% end %>
-    
+  <div class="grid gap-2 mb-6 md:grid-cols-2">
     <div class="field">
-        <%= f.label :first_name %>
-        <%= f.text_field :first_name %>
+      <%= f.label :first_name, class: "block mb-2 text-sm font-medium text-gray-900 capitalize" %>
+      <%= f.text_field :first_name, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" %>
     </div>
-    
+      
     <div class="field">
-        <%= f.label :last_name %>
-        <%= f.text_field :last_name %>
+        <%= f.label :last_name, class: "block mb-2 text-sm font-medium text-gray-900 capitalize" %>
+        <%= f.text_field :last_name, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" %>
     </div>
-    
+
     <div class="field">
-        <%= f.label :email %>
-        <%= f.email_field :email %>
+        <%= f.label :phone , class: "block mb-2 text-sm font-medium text-gray-900 capitalize"%>
+        <%= f.telephone_field :phone, placeholder: "123-45-678", pattern: "[0-9]{3}-[0-9]{2}-[0-9]{3}", class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" %>
     </div>
-    
-    <div class="field">
-        <%= f.label :phone %>
-        <%= f.telephone_field :phone %>
-    </div>
-    
-    <div class="actions">
-        <%= f.submit %>
-    </div>
+  </div>
+
+  <div class="field mb-6">
+    <%= f.label :email_address, class: "block mb-2 text-sm font-medium text-gray-900 capitalize" %>
+    <%= f.email_field :email, class:"bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"%>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit class: "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center cursor-pointer" %>
+    <%= link_to 'Back', clients_path, class: "min-w-24 font-medium rounded-lg border-1 border-slate-200 text-sm px-5 py-2.5 ml-4 justify-center text-center inline-flex items-center rounded-md hover:bg-slate-100" %>
+  </div>
 <% end %>
