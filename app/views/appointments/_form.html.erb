@@ -1,5 +1,4 @@
 <%# app/views/appiointments/_form.html.erb %>
-
 <%= form_with(model: appointment, url: client_appointments_path, local: true) do |f| %>
   <% if appointment.errors.any? %>
     <div id="error_explanation" style="color: red;">
@@ -11,24 +10,26 @@
         </ul>
     </div>
   <% end %>
-    <% if appointment.client_id.present? %>
-        <div class="field">
-            <%= f.label :client_id %>
-            <%= f.text_field :client_id, value: appointment.client.full_name, disabled: true %>
-        </div>
-    <% else %>
-        <div class="field">
-            <%= f.label :client_id %>
-            <%= f.collection_select :client_id, current_user.clients, :id, :full_name, prompt: "Select a Client" %>
-        </div>
-    <% end %>
 
+  <% if appointment.client_id.present? %>
+    <div class="field mb-6">
+      <%= f.label :client_id, class:"block mb-2 text-sm font-medium text-gray-900 capitalize" %>
+      <%= f.text_field :client_id, value: appointment.client.full_name, class:"bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 cursor-not-allowed", disabled: true %>
+    </div>
+  <% else %>
     <div class="field">
-        <%= f.label :scheduled_at %>
-        <%= f.datetime_select :scheduled_at %>
+        <%= f.label :client_id, class:"block mb-2 text-sm font-medium text-gray-900 capitalize" %>
+        <%= f.collection_select :client_id, current_user.clients, :id, :full_name, prompt: "Select a Client", class:"bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" %>
     </div>
-    
-    <div class="actions">
-        <%= f.submit %>
-    </div>
+<% end %>
+
+<div class="field">
+    <%= f.label :scheduled_at %>
+    <%= f.datetime_select :scheduled_at %>
+</div>
+
+<div class="actions">
+    <%= f.submit class: "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center cursor-pointer" %>
+    <%= link_to 'Back', client_appointments_path, class: "min-w-24 font-medium rounded-lg border-1 border-slate-200 text-sm px-5 py-2.5 ml-4 justify-center text-center inline-flex items-center rounded-md hover:bg-slate-100" %>
+</div>
 <% end %>
