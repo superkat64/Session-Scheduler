@@ -1,21 +1,22 @@
 class AppointmentsController < ApplicationController
+  before_action :set_client
+  before_action :set_appointment, only: %i[show edit update destroy]
   
   def index
-    @appointments = current_user.appointments
+    @appointments = @client.appointments
   end
   
   def show
   end
 
   def new
-    @client = current_user.clients.find(params[:client_id])
-    @appointment = current_user.appointments.new(client: @client)
+    @appointment = @client.appointments.build
   end
 
   def create
-    @appointment = current_user.appointments.build(appointment_params)
+    @appointment = @client.appointments.build(appointment_params)
     if @appointment.save
-      redirect_to client_appointment_url(id: @appointment.id), notice: 'Appointment was successfully created.'
+      redirect_to client_appointment_path(@client, @appointment), notice: 'Appointment was successfully created.'
     else
       render :new, status: :unprocessable_entity
     end
@@ -25,12 +26,28 @@ class AppointmentsController < ApplicationController
   end
 
   def update
+    if(@appointment.update(appointment_params))
+      redirect_to client_appointment_path(@client, @appointment), notice: 'Appointment was successfully updated.'
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
-  def destory
+  def destroy
+    @appointment.destroy
+    redirect_to client_appointments_path(@client), notice: 'Appointment was successfully deleted.'
   end
 
   private
+
+    def set_client
+      @client = Client.find(params[:client_id])
+    end
+
+    def set_appointment
+      @appointment = @client.appointments.find(params[:id])
+    end
+
     def appointment_params
       params.require(:appointment).permit(:client_id, :scheduled_at, :location, :status)
     end

@@ -1,2 +1,27 @@
-<h1>Appointments#index</h1>
-<p>Find me in app/views/appointments/index.html.erb</p>
+<%# app/view/appointments/index.html.erb %>
+<h1> <%= @client.first_name %> <%= @client.last_name %>'s Appointments</h1>
+<%= link_to 'New Appointment', new_client_appointment_path(@client) %>
+
+<table>
+    <thead>
+    <tr>
+        <th>Scheduled At</th>
+        <th>Location</th>
+        <th>Status</th>
+        <th colspan="3"></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @appointments.each do |appointment| %>
+        <tr>
+        <td><%= appointment.scheduled_at %></td>
+        <td><%= appointment.location %></td>
+        <td><%= appointment.status %></td>
+        <td><%= link_to 'Show', client_appointment_path(@client, appointment) %></td>
+        <td><%= link_to 'Edit', edit_client_appointment_path(@client, appointment) %></td>
+        <td><%= button_to 'Delete', client_appointment_path(@client, appointment), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+    <% end %>
+    </tbody>
+</table>
