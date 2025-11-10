@@ -1,2 +1,8 @@
-<h1>Appointments#edit</h1>
-<p>Find me in app/views/appointments/edit.html.erb</p>
+<%# app/views/appointments/edit.html.erb %>
+<div class="flex flex-col relative w-full">
+    <div class="flex justify-between items-center mb-6">
+        <h1 class="text-5xl">Edit Appointment</h1>
+    </div>
+
+    <%= render 'form', appointment: @appointment %>
+</div>
