@@ -18,7 +18,7 @@
       <tbody>
         <% @appointments.each do |appointment| %>
             <tr>
-            <td class="px-4 py-2"><%= appointment.scheduled_at %></td>
+            <td class="px-4 py-2"><%= appointment.formatted_scheduled_at %></td>
             <td class="px-4 py-2"><%= appointment.location %></td>
             <td class="px-4 py-2"><%= appointment.status %></td>
             <td class="px-4 py-2"><%= link_to 'Show', client_appointment_path(@client, appointment), class: "hover:underline"%></td>

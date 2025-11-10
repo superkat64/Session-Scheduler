@@ -8,7 +8,7 @@
     <%= link_to 'Edit Appointment', edit_client_appointment_path, class: "m-3 mt-10 p-2 rounded-md border-1 border-slate-200 text-xs text-gray-700 text-base/6 font-semibold uppercase hover:bg-slate-100" %>
   </div>
   <div>
-    <p class="mt-4"><strong>Scheduled At:</strong> <%= @appointment.scheduled_at %></p>
+    <p class="mt-4"><strong>Scheduled At:</strong> <%= @appointment.formatted_scheduled_at %></p>
     <p class="mt-2"><strong>Location:</strong> <%= @appointment.location %></p>
     <p class="mt-2"><strong>Status:</strong> <%= @appointment.status %></p>
   </div>
