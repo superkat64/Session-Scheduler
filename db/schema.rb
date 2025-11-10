@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_11_05_184851) do
+ActiveRecord::Schema[8.0].define(version: 2025_11_10_182052) do
   create_table "appointments", force: :cascade do |t|
     t.integer "client_id", null: false
     t.datetime "scheduled_at"
@@ -32,6 +32,14 @@ ActiveRecord::Schema[8.0].define(version: 2025_11_05_184851) do
     t.index ["user_id"], name: "index_clients_on_user_id"
   end
 
+  create_table "notes", force: :cascade do |t|
+    t.integer "appointment_id", null: false
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["appointment_id"], name: "index_notes_on_appointment_id"
+  end
+
   create_table "sessions", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "ip_address"
@@ -51,5 +59,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_11_05_184851) do
 
   add_foreign_key "appointments", "clients"
   add_foreign_key "clients", "users"
+  add_foreign_key "notes", "appointments"
   add_foreign_key "sessions", "users"
 end
