@@ -12,24 +12,26 @@
         </div>
     <% end %>
     
-    <div class="field">
-        <%= f.label :first_name %>
-        <%= f.text_field :first_name %>
+    <div class="grid gap-2 mb-6 md:grid-cols-2">
+        <div class="field">
+            <%= f.label :first_name, class: "block mb-2 text-sm font-medium text-gray-900 capitalize" %>
+            <%= f.text_field :first_name, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" %>
+        </div>
+        
+        <div class="field">
+            <%= f.label :last_name, class: "block mb-2 text-sm font-medium text-gray-900 capitalize" %>
+            <%= f.text_field :last_name, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" %>
+        </div>
+
+        <div class="field">
+            <%= f.label :phone , class: "block mb-2 text-sm font-medium text-gray-900 capitalize"%>
+            <%= f.telephone_field :phone, placeholder: "123-45-678", pattern: "[0-9]{3}-[0-9]{2}-[0-9]{3}", class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" %>
+        </div>
     </div>
-    
-    <div class="field">
-        <%= f.label :last_name %>
-        <%= f.text_field :last_name %>
-    </div>
-    
-    <div class="field">
-        <%= f.label :email %>
-        <%= f.email_field :email %>
-    </div>
-    
-    <div class="field">
-        <%= f.label :phone %>
-        <%= f.telephone_field :phone %>
+
+    <div class="field mb-6">
+        <%= f.label :email_address, class: "block mb-2 text-sm font-medium text-gray-900 capitalize" %>
+        <%= f.email_field :email, class:"bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"%>
     </div>
     
     <div class="actions">
