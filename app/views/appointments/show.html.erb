@@ -4,7 +4,7 @@
     <%= link_to 'Back to Appointments', client_appointments_path, class: "text-blue-500 hover:underline" %>
   </div>
   <div class="flex justify-between items-center">
-    <h1 class="text-5xl"><%= @client.first_name %> <%= @client.last_name %>'s Appointment</h1>
+    <h1 class="text-5xl"><%= @client.full_name %>'s Appointment</h1>
     <%= link_to 'Edit Appointment', edit_client_appointment_path, class: "m-3 mt-10 p-2 rounded-md border-1 border-slate-200 text-xs text-gray-700 text-base/6 font-semibold uppercase hover:bg-slate-100" %>
   </div>
   <div>
@@ -14,7 +14,10 @@
   </div>
   <div class="mt-8 mb-4 flex justify-between items-center">
     <h2 class="text-3xl">Notes</h2>
+
+    <%# TODO: Add functionality to create notes %>
     <%# link_to 'New Appointment', new_client_appointment_path(@client), class: "m-3 mt-3 p-2 rounded-lg border-1 border-slate-200 text-xs text-gray-700 text-base/6 font-semibold uppercase hover:bg-slate-100" %>
+    
     </div>
     <ul>
       <% @appointment.notes.each do |note| %>
