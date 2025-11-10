@@ -1,2 +1,25 @@
-<h1>Appointments#show</h1>
-<p>Find me in app/views/appointments/show.html.erb</p>
+<%# app/views/appointments/show.html.erb %>
+<div class="flex flex-col relative w-full">
+  <div class="mb-4">
+    <%= link_to 'Back to Appointments', client_appointments_path, class: "text-blue-500 hover:underline" %>
+  </div>
+  <div class="flex justify-between items-center">
+    <h1 class="text-5xl"><%= @client.first_name %> <%= @client.last_name %>'s Appointment</h1>
+    <%= link_to 'Edit Appointment', edit_client_appointment_path, class: "m-3 mt-10 p-2 rounded-md border-1 border-slate-200 text-xs text-gray-700 text-base/6 font-semibold uppercase hover:bg-slate-100" %>
+  </div>
+  <div>
+    <p class="mt-4"><strong>Scheduled At:</strong> <%= @appointment.scheduled_at %></p>
+    <p class="mt-2"><strong>Location:</strong> <%= @appointment.location %></p>
+    <p class="mt-2"><strong>Status:</strong> <%= @appointment.status %></p>
+  </div>
+  <div class="mt-8 mb-4 flex justify-between items-center">
+    <h2 class="text-3xl">Notes</h2>
+    <%# link_to 'New Appointment', new_client_appointment_path(@client), class: "m-3 mt-3 p-2 rounded-lg border-1 border-slate-200 text-xs text-gray-700 text-base/6 font-semibold uppercase hover:bg-slate-100" %>
+    </div>
+    <ul>
+      <% @appointment.notes.each do |note| %>
+        <li>Note #<%= note.id %> | Created at: <%= note.created_at.strftime("%B %d, %Y %I:%M %p")%></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
