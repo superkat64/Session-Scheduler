@@ -2,10 +2,10 @@
 <div class="flex flex-col relative w-full">
   <div class="flex justify-between items-center">
     <h1 class="text-5xl">Appointments for <%= @client.first_name %> <%= @client.last_name %></h1>
-    <%= link_to 'New Appointment', new_client_appointment_path(@client), class: "m-3 mt-10 p-2 rounded-md border-1 border-slate-200 text-xs text-gray-700 text-base/6 font-semibold uppercase hover:bg-slate-100" %>
+    <%= link_to 'New Appointment', new_client_appointment_path(@client), class: "m-3 mt-10 p-2 rounded-lg border-1 border-slate-200 text-xs text-gray-700 text-base/6 font-semibold uppercase hover:bg-slate-100" %>
   </div>
   <div class="overflow-x-auto">
-    <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+    <table class="w-full text-sm text-left text-gray-500">
       <thead class="rounded-t-lg text-xs text-gray-700 text-base/6 uppercase bg-gray-50">
         <tr class="bg-gray-200">
             <th class="px-4 py-4 text-left uppercase">Scheduled At</th>
