@@ -1,15 +1,15 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  first_name: MyString
-  last_name: MyString
-  email: MyString
-  phone: MyString
+  first_name: Thomas
+  last_name: Jefferson
+  email: t.dog@virginia.gov
+  phone: 0000000000
   user: one
 
 two:
-  first_name: MyString
-  last_name: MyString
-  email: MyString
-  phone: MyString
+  first_name: Alexander
+  last_name: Hamliton
+  email: ilovemoney@wallstreet.org
+  phone: 1111111111
   user: two

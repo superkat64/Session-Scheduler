@@ -1,33 +1,57 @@
 require "test_helper"
 
 class AppointmentsControllerTest < ActionDispatch::IntegrationTest
+  setup do
+    @user = users(:one)
+    @client = clients(:one)
+    @appointment = appointments(:one)
+
+    # Sign in — this creates the proper session
+    sign_in_as(@user)
+  end
+
   test "should get index" do
-    get appointments_index_url
+    get client_appointments_url(client_id: @client.id)
+    assert_response :success
+  end
+
+  test "should get show" do
+    get client_appointment_url(client_id: @client.id, id: @appointment.id)
     assert_response :success
   end
 
   test "should get new" do
-    get appointments_new_url
+    get new_client_appointment_url(client_id: @client.id)
     assert_response :success
   end
 
-  test "should get create" do
-    get appointments_create_url
+   test "should get edit" do
+    get edit_client_appointment_url(client_id: @client.id, id: @appointment.id)
     assert_response :success
   end
 
-  test "should get edit" do
-    get appointments_edit_url
-    assert_response :success
+  test "should create a new appointment and redirect to appointment#show" do
+    post client_appointments_url(client_id: @client.id), params: { appointment: { scheduled_at: "2024-12-31 10:00:00" } }
+    assert_redirected_to client_appointment_url(client_id: @client.id, id: Appointment.last)
   end
 
-  test "should get update" do
-    get appointments_update_url
-    assert_response :success
+  test "should not create appointment with invalid data" do
+    post client_appointments_url(client_id: @client.id), params: { appointment: { scheduled_at: "" } }
+    assert_response :unprocessable_entity
   end
 
-  test "should get destory" do
-    get appointments_destory_url
-    assert_response :success
+  test "should edit an appointment and redirect to appointment#show" do
+    put client_appointment_url(client_id: @client.id, id: @appointment.id), params: { appointment: { scheduled_at: "2025-01-01 11:00:00" } }
+    assert_redirected_to client_appointment_url(client_id: @client.id, id: @appointment.id)
+  end
+
+  test "should not edit appointment with invalid data" do
+    put client_appointment_url(client_id: @client.id, id: @appointment.id), params: { appointment: { scheduled_at: "" } }
+    assert_response :unprocessable_entity
+  end
+
+  test "should destroy an appointment and redirect to apppointment#index" do
+    delete client_appointment_url(client_id: @client.id, id: @appointment.id)
+    assert_redirected_to client_appointments_url(client_id: @client.id)
   end
 end

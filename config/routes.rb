@@ -1,17 +1,4 @@
 Rails.application.routes.draw do
-  # get "appointments/index"
-  # get "appointments/new"
-  # get "appointments/create"
-  # get "appointments/edit"
-  # get "appointments/update"
-  # get "appointments/destory"
-  # get "clients/index"
-  # get "clients/show"
-  # get "clients/new"
-  # get "clients/create"
-  # get "clients/edit"
-  # get "clients/update"
-  # get "clients/destroy"
   resource :session
   resources :passwords, param: :token
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
