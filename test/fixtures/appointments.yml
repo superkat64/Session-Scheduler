@@ -3,11 +3,11 @@
 one:
   client: one
   scheduled_at: 2025-11-05 13:48:51
-  location: MyString
-  status: MyString
+  location: 0
+  status: 0
 
 two:
   client: two
   scheduled_at: 2025-11-05 13:48:51
-  location: MyString
-  status: MyString
+  location: 0
+  status: 1

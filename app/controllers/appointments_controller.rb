@@ -1,5 +1,5 @@
 class AppointmentsController < ApplicationController
-  before_action :set_client, only: %i[index show new create] 
+  before_action :set_client, only: %i[index show new create]
   before_action :set_appointment, only: %i[show edit update destroy]
 
   def index
@@ -15,7 +15,7 @@ class AppointmentsController < ApplicationController
 
   def create
     @appointment = @client.appointments.build(appointment_params)
-    if @appointment.save
+    if @appointment.save!
       redirect_to appointment_path(@appointment), notice: "Appointment was successfully created."
     else
       render :new, status: :unprocessable_entity
@@ -26,16 +26,18 @@ class AppointmentsController < ApplicationController
   end
 
   def update
-    if @appointment.update(appointment_params)
+    if @appointment.update!(appointment_params)
       redirect_to appointment_path(@appointment), notice: "Appointment was successfully updated."
     else
+
       render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
+    client_id = @appointment.client_id
     @appointment.destroy
-    redirect_to client_appointments_path(@client), notice: "Appointment was successfully deleted."
+    redirect_to client_appointments_path(client_id), notice: "Appointment was successfully deleted."
   end
 
   private

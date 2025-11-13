@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   resources :clients, shallow: true do
     resources :appointments do
-      resources :notes, except: [:index]
+      resources :notes, except: [ :index ]
     end
   end
 

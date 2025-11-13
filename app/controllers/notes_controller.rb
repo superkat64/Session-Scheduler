@@ -1,10 +1,10 @@
 class NotesController < ApplicationController
   before_action :set_appointment, only: %i[ new create]
   before_action :set_note, only: %i[show edit update destroy]
-  
+
   def show
   end
-  
+
   def new
     @note = @appointment.notes.build
   end
@@ -38,7 +38,7 @@ class NotesController < ApplicationController
   private
 
     def set_appointment
-      @appointment = Appointment.find(params[:appointment_id]) 
+      @appointment = Appointment.find(params[:appointment_id])
     end
 
     def set_note
