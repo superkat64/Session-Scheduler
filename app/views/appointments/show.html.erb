@@ -9,8 +9,8 @@
   </div>
   <div>
     <p class="mt-4"><strong>Scheduled At:</strong> <%= @appointment.formatted_scheduled_at %></p>
-    <p class="mt-2"><strong>Location:</strong> <%= @appointment.location %></p>
-    <p class="mt-2"><strong>Status:</strong> <%= @appointment.status %></p>
+    <p class="mt-2 capitalize"><strong>Location:</strong> <%= @appointment.location %></p>
+    <p class="mt-2 capitalize"><strong>Status:</strong> <%= @appointment.status %></p>
     <p class="mt-2"><strong>Duration</strong> <%= @appointment.duration_minutes %>min</p>
   </div>
   <div class="mt-8 mb-4 flex justify-between items-center">
@@ -21,7 +21,12 @@
     </div>
     <ul>
       <% @appointment.notes.each do |note| %>
-        <li>Note #<%= note.id %> | Created at: <%= note.created_at.strftime("%B %d, %Y %I:%M %p")%></li>
+      <li>
+        <%= link_to note_path(note), class: "block p-4 mb-4 border border-gray-200 rounded-lg hover:bg-gray-50" do %>
+          <p>Note <%= note.id %> | Created at: <%= note.created_at.strftime("%B %d, %Y %I:%M %p") %></p>
+          <p class="mt-2"><%= truncate(note.content, length: 100) %></p>
+        <% end %>
+      </li>
       <% end %>
     </ul>
   </div>

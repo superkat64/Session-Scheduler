@@ -10,14 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_11_12_170441) do
+ActiveRecord::Schema[8.1].define(version: 2025_11_13_133646) do
   create_table "appointments", force: :cascade do |t|
     t.integer "client_id", null: false
     t.datetime "created_at", null: false
     t.integer "duration_minutes", default: 60, null: false
-    t.string "location"
+    t.integer "location", default: 0, null: false
+    t.string "old_location"
+    t.string "old_status"
     t.datetime "scheduled_at"
-    t.string "status"
+    t.integer "status", default: 0, null: false
     t.datetime "updated_at", null: false
     t.index ["client_id"], name: "index_appointments_on_client_id"
   end
