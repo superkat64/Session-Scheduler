@@ -4,5 +4,9 @@
         <h1 class="text-5xl">Edit Appointment</h1>
     </div>
 
-    <%= render 'form', appointment: @appointment %>
+   <%= form_with(model: @appointment, url: appointment_path, local: true) do |form| %>
+        <%= render 'form', appointment: @appointment, f: form %>
+         <%= link_to 'Back', appointment_path, class: "min-w-24 font-medium rounded-lg border-1 border-slate-200 text-sm px-5 py-2.5 ml-4 justify-center text-center inline-flex items-center rounded-md hover:bg-slate-100" %>
+        </div>
+    <% end %>
 </div>

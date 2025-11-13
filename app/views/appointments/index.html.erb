@@ -21,9 +21,9 @@
             <td class="px-4 py-2"><%= appointment.formatted_scheduled_at %></td>
             <td class="px-4 py-2"><%= appointment.location %></td>
             <td class="px-4 py-2"><%= appointment.status %></td>
-            <td class="px-4 py-2"><%= link_to 'Show', client_appointment_path(@client, appointment), class: "hover:underline"%></td>
-            <td class="px-4 py-2"><%= link_to 'Edit', edit_client_appointment_path(@client, appointment), class: "hover:underline" %></td>
-            <td class="px-4 py-2"><%= button_to 'Delete', client_appointment_path(@client, appointment), method: :delete, class: "cursor-pointer hover:underline", data: { confirm: 'Are you sure?' } %></td>
+            <td class="px-4 py-2"><%= link_to 'Show', appointment_path(appointment), class: "hover:underline"%></td>
+            <td class="px-4 py-2"><%= link_to 'Edit', edit_appointment_path(appointment), class: "hover:underline" %></td>
+            <td class="px-4 py-2"><%= button_to 'Delete', appointment_path(appointment), method: :delete, class: "cursor-pointer hover:underline", data: { confirm: 'Are you sure?' } %></td>
             </tr>
         <% end %>
       </tbody>

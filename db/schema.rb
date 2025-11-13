@@ -10,25 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_11_10_182052) do
+ActiveRecord::Schema[8.1].define(version: 2025_11_12_170441) do
   create_table "appointments", force: :cascade do |t|
     t.integer "client_id", null: false
-    t.datetime "scheduled_at"
-    t.string "location"
-    t.string "status"
     t.datetime "created_at", null: false
+    t.integer "duration_minutes", default: 60, null: false
+    t.string "location"
+    t.datetime "scheduled_at"
+    t.string "status"
     t.datetime "updated_at", null: false
     t.index ["client_id"], name: "index_appointments_on_client_id"
   end
 
   create_table "clients", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "email"
     t.string "first_name"
     t.string "last_name"
-    t.string "email"
     t.string "phone"
-    t.integer "user_id", null: false
-    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
     t.index ["user_id"], name: "index_clients_on_user_id"
   end
 
@@ -41,18 +42,18 @@ ActiveRecord::Schema[8.0].define(version: 2025_11_10_182052) do
   end
 
   create_table "sessions", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.string "ip_address"
-    t.string "user_agent"
     t.datetime "created_at", null: false
+    t.string "ip_address"
     t.datetime "updated_at", null: false
+    t.string "user_agent"
+    t.integer "user_id", null: false
     t.index ["user_id"], name: "index_sessions_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
+    t.datetime "created_at", null: false
     t.string "email_address", null: false
     t.string "password_digest", null: false
-    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
   end

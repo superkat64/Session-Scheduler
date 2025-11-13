@@ -1,0 +1,13 @@
+<%# app/views/notes/show.html.erb %>
+<div class="flex flex-col relative w-full">
+  <div class="mb-4">
+    <%= link_to 'Back to Appointment', appointment_path(@note.appointment), class: "text-blue-500 hover:underline" %>
+  </div>
+  <div class="flex justify-between items-center">
+    <h1 class="text-5xl">Note #<%= @note.id %> | Created at: <%= @note.created_at.strftime("%B %d, %Y %I:%M %p")%></h1>
+    <%= link_to 'Edit Note', edit_note_path, class: "m-3 mt-10 p-2 rounded-md border-1 border-slate-200 text-xs text-gray-700 text-base/6 font-semibold uppercase hover:bg-slate-100" %>
+  </div>
+  <div>
+    <p class="mt-4"><strong>Content:</strong> <%= @note.content %></p>
+  </div>
+</div>

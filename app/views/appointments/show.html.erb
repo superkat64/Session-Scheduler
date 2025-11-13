@@ -1,22 +1,22 @@
 <%# app/views/appointments/show.html.erb %>
 <div class="flex flex-col relative w-full">
   <div class="mb-4">
-    <%= link_to 'Back to Appointments', client_appointments_path, class: "text-blue-500 hover:underline" %>
+    <%= link_to 'Back to Appointments', client_appointments_path(client_id: @appointment.client_id), class: "text-blue-500 hover:underline" %>
   </div>
   <div class="flex justify-between items-center">
-    <h1 class="text-5xl"><%= @client.full_name %>'s Appointment</h1>
-    <%= link_to 'Edit Appointment', edit_client_appointment_path, class: "m-3 mt-10 p-2 rounded-md border-1 border-slate-200 text-xs text-gray-700 text-base/6 font-semibold uppercase hover:bg-slate-100" %>
+    <h1 class="text-5xl"><%= @appointment.client.full_name %>'s Appointment</h1>
+    <%= link_to 'Edit Appointment', edit_appointment_path, class: "m-3 mt-10 p-2 rounded-md border-1 border-slate-200 text-xs text-gray-700 text-base/6 font-semibold uppercase hover:bg-slate-100" %>
   </div>
   <div>
     <p class="mt-4"><strong>Scheduled At:</strong> <%= @appointment.formatted_scheduled_at %></p>
     <p class="mt-2"><strong>Location:</strong> <%= @appointment.location %></p>
     <p class="mt-2"><strong>Status:</strong> <%= @appointment.status %></p>
+    <p class="mt-2"><strong>Duration</strong> <%= @appointment.duration_minutes %>min</p>
   </div>
   <div class="mt-8 mb-4 flex justify-between items-center">
     <h2 class="text-3xl">Notes</h2>
 
-    <%# TODO: Add functionality to create notes %>
-    <%# link_to 'New Appointment', new_client_appointment_path(@client), class: "m-3 mt-3 p-2 rounded-lg border-1 border-slate-200 text-xs text-gray-700 text-base/6 font-semibold uppercase hover:bg-slate-100" %>
+    <%= link_to 'New Note', new_appointment_note_path(@appointment), class: "m-3 mt-3 p-2 rounded-lg border-1 border-slate-200 text-xs text-gray-700 text-base/6 font-semibold uppercase hover:bg-slate-100" %>
     
     </div>
     <ul>

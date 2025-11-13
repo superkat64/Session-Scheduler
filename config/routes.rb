@@ -14,8 +14,10 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
 
-  resources :clients do
-    resources :appointments
+  resources :clients, shallow: true do
+    resources :appointments do
+      resources :notes, except: [:index]
+    end
   end
 
   root to: "clients#index"
