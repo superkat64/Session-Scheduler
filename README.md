@@ -64,8 +64,9 @@ Visit `http://localhost:3000` to see the application.
 ```bash
 # Run the full test suite
 rails test
-# or
-bundle exec rspec
+
+# Lint
+bin/rubocop
 ```
 
 ## Project Goals
