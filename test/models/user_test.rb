@@ -46,13 +46,12 @@ class UserTest < ActiveSupport::TestCase
     assert_equal "mixedcase@example.com", user.email_address
   end
 
-  # ✅ email uniqueness (if your schema enforces it)
-  # uncomment if you have a unique index
-  # test "email_address must be unique" do
-  #   dup = User.new(email_address: @user.email_address, password: "password")
-  #   assert_not dup.save, "Allowed duplicate email"
-  #   assert_includes dup.errors[:email_address], "has already been taken"
-  # end
+  # ✅ Email uniqueness
+  test "email_address must be unique" do
+    dup = User.new(email_address: @user.email_address, password: "password")
+    assert_not dup.save, "Allowed duplicate email"
+    assert_includes dup.errors[:email_address], "has already been taken"
+  end
 
   # ✅ Dependent destroys
   test "destroys associated clients when destroyed" do

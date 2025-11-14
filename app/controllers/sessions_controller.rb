@@ -12,6 +12,11 @@ class SessionsController < ApplicationController
     else
       redirect_to new_session_path, alert: "Try another email address or password."
     end
+
+  rescue ActiveRecord::RecordNotUnique
+    @user ||= User.new(user_params)
+    @user.errors.add(:email_address, "has already been taken")
+    render :new, status: :unprocessable_entity
   end
 
   def destroy

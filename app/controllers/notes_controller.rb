@@ -11,7 +11,7 @@ class NotesController < ApplicationController
 
   def create
     @note = @appointment.notes.build(note_params)
-    if @note.save
+    if @note.save!
       redirect_to appointment_path(@appointment), notice: "Note was successfully created."
     else
       render :new, status: :unprocessable_entity
@@ -22,7 +22,7 @@ class NotesController < ApplicationController
   end
 
   def update
-    if @note.update(note_params)
+    if @note.update!(note_params)
       redirect_to appointment_path(@note.appointment), notice: "Note was successfully updated."
     else
       render :edit, status: :unprocessable_entity

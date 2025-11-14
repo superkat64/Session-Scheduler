@@ -5,8 +5,6 @@ class AppointmentsControllerTest < ActionDispatch::IntegrationTest
     @user = users(:one)
     @client = clients(:one)
     @appointment = appointments(:one)
-
-    # Sign in — this creates the proper session
     sign_in_as(@user)
   end
 

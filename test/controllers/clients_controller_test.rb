@@ -4,8 +4,6 @@ class ClientsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @user = users(:one)
     @client = clients(:one)
-
-    # Sign in — this creates the proper session
     sign_in_as(@user)
   end
 
