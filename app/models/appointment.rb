@@ -10,6 +10,9 @@ class Appointment < ApplicationRecord
   validates :location, :status, presence: true
   validates :duration_minutes, numericality: { greater_than: 0 }
 
+  scope :upcoming, -> { where("scheduled_at > ?", Time.current) }
+  scope :past, -> { where("scheduled_at <= ?", Time.current) }
+
 
   def formatted_scheduled_at
     scheduled_at.strftime("%b %d, %Y at %I:%M %p")

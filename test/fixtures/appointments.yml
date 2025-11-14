@@ -11,3 +11,14 @@ two:
   scheduled_at: 2025-11-05 13:48:51
   location: 0
   status: 1
+
+upcoming_appointment:
+  client: one
+  scheduled_at: <%= 2.days.from_now.strftime("%Y-%m-%d %H:%M:%S") %>
+  location: 1
+  status: 0
+
+past_appointment:
+  client: two
+  scheduled_at: <%= 2.days.ago.strftime("%Y-%m-%d %H:%M:%S") %>
+  location: 1

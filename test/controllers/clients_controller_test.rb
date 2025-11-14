@@ -40,12 +40,12 @@ class ClientsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update a client and redirect to client#show" do
-    put client_url(id: @client.id), params: { client: { first_name: "UpdatedName" } }
+    put client_url(id: @client.id), params: { client: { first_name: "UpdateName", last_name: "Doe", email: "j.doe@test.com", phone: "1234567890" }  }
     assert_redirected_to client_url(@client)
   end
 
   test "should not update client with invalid data" do
-    put client_url(id: @client.id), params: { client: { email: "" } }
+    put client_url(id: @client.id), params: { client: { first_name: "John", last_name: "Doe", email: "", phone: "1234567890" }  }
     assert_response :unprocessable_entity
   end
 

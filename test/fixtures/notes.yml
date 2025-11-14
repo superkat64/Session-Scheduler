@@ -2,8 +2,12 @@
 
 one:
   appointment: one
-  content: MyText
+  content: "Discuss follow-up actions and next steps."
 
 two:
   appointment: two
-  content: MyText
+  content: "Client expressed concerns about the timeline."
+
+three:
+  appointment: two
+  content: "Reviewed project requirements and deliverables."

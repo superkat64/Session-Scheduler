@@ -33,7 +33,7 @@ class UserTest < ActiveSupport::TestCase
 
   test "has many appointments through clients" do
     assert_respond_to @user, :appointments
-    assert_equal 1, @user.appointments.count   # from fixtures
+    assert_equal 2, @user.appointments.count   # from fixtures
   end
 
   # ✅ Normalization
