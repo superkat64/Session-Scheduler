@@ -3,7 +3,7 @@ class User < ApplicationRecord
   has_many :sessions, dependent: :destroy
   has_many :clients, dependent: :destroy
   has_many :appointments, through: :clients
-  
+
   validates :email_address,
             presence: true,
             uniqueness: { case_sensitive: false },

@@ -1,4 +1,4 @@
-require  'test_helper'
+require "test_helper"
 
 class NotesControllerTest < ActionDispatch::IntegrationTest
   setup do
@@ -31,7 +31,7 @@ class NotesControllerTest < ActionDispatch::IntegrationTest
   test "should not create note with invalid data" do
     post appointment_notes_url(appointment_id: @appointment.id), params: { note: { content: "" } }
     assert_response :unprocessable_entity
-  end 
+  end
 
   test "should edit a note and redirect to appointment#show" do
     put note_url(id: @note.id), params: { note: { content: "Updated note content." } }
