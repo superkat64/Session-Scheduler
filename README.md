@@ -21,8 +21,7 @@ Session Scheduler is designed to help medical and therapy providers manage their
 - Email notifications using ActionMailer and ActiveJob
 - Billing and invoicing system
 - Automated appointment reminders
-- Calendar integrations
-- Multi-provider support
+- Improved Calendar UI
 
 ## Tech Stack
 
