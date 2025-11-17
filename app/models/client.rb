@@ -4,7 +4,6 @@ class Client < ApplicationRecord
 
   validates :first_name, :last_name, :email, :phone, presence: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
-  validates :phone, format: { with: /\A\+?[0-9]{7,15}\z/, message: "must be a valid phone number" }
 
   before_validation :normalize_email, :normalize_phone, :normalize_names
 

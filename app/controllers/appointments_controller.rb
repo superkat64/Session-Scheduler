@@ -15,7 +15,7 @@ class AppointmentsController < ApplicationController
 
   def create
     @appointment = @client.appointments.build(appointment_params)
-    if @appointment.save!
+    if @appointment.save
       redirect_to appointment_path(@appointment), notice: "Appointment was successfully created."
     else
       render :new, status: :unprocessable_entity
@@ -26,7 +26,7 @@ class AppointmentsController < ApplicationController
   end
 
   def update
-    if @appointment.update!(appointment_params)
+    if @appointment.update(appointment_params)
       redirect_to appointment_path(@appointment), notice: "Appointment was successfully updated."
     else
 

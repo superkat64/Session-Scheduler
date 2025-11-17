@@ -14,7 +14,7 @@ class ClientsController < ApplicationController
 
   def create
     @client = current_user.clients.build(client_params)
-    if @client.save!
+    if @client.save
       redirect_to @client, notice: "Client was successfully created."
     else
       render :new, status: :unprocessable_entity
@@ -25,7 +25,7 @@ class ClientsController < ApplicationController
   end
 
   def update
-    if @client.update!(client_params)
+    if @client.update(client_params)
       redirect_to @client, notice: "Client was successfully updated."
     else
       render :edit, status: :unprocessable_entity
