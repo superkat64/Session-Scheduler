@@ -24,7 +24,22 @@
   </head>
 
   <body>
-    <main class="container mx-auto mt-20 mb-15 px-5 flex">
+    <nav class="bg-neutral-primary fixed w-full z-20 top-5 start-0">
+      <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+        <%= link_to root_path, class: "inline-flex items-center text-sm font-medium text-body hover:text-fg-brand" do %>
+          <svg class="w-4 h-4 me-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m4 12 8-8 8 8M6 10.5V19a1 1 0 0 0 1 1h3v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h3a1 1 0 0 0 1-1v-8.5"/></svg>
+          Home
+        <% end %>
+        <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+          <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-default rounded-base bg-neutral-secondary-soft md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-neutral-primary">
+            <li>
+              <%= button_to "Log out", session_path, method: :delete, class: "inline-flex items-center text-sm font-medium text-body hover:text-fg-brand cursor-pointer" if authenticated? %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <main class="container max-w-screen-xl mx-auto mt-20 mb-15 px-5 flex">
       <%= yield %>
     </main>
   </body>

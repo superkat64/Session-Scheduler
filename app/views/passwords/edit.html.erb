@@ -1,9 +1,20 @@
-<h1>Update your password</h1>
+<%# app/views/passwords/edit.html.erb %>
+<div class="flex flex-col relative w-fit mx-auto mt-8">
+  <div class="flex justify-between items-center mb-6">        
+    <h1 class="text-5xl">Update Your Password</h1>
+  </div>
+  <%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
 
-<%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
-
-<%= form_with url: password_path(params[:token]), method: :put do |form| %>
-  <%= form.password_field :password, required: true, autocomplete: "new-password", placeholder: "Enter new password", maxlength: 72 %><br>
-  <%= form.password_field :password_confirmation, required: true, autocomplete: "new-password", placeholder: "Repeat new password", maxlength: 72 %><br>
-  <%= form.submit "Save" %>
-<% end %>
+  <%= form_with url: password_path(params[:token]), method: :put do |form| %>
+    <div class="field mb-6">
+      <%= form.label "New Password", class: "block mb-2 text-sm font-medium text-gray-900 capitalize" %>
+      <%= form.password_field :password, required: true, autocomplete: "new-password", placeholder: "Enter new password", maxlength: 72, class:"bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" %><br>
+    </div>
+    <div class="field mb-6">
+      <%= form.label "Confirm New Password", class: "block mb-2 text-sm font-medium text-gray-900 capitalize" %>
+      <%= form.password_field :password_confirmation, required: true, autocomplete: "new-password", placeholder: "Repeat new password", maxlength: 72, class:"bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" %>
+    </div>
+    <%= form.submit "Save", class: "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center cursor-pointer" %>
+    </div>
+  <% end %>
+</div>
