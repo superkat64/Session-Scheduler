@@ -25,11 +25,11 @@
 <div class="grid gap-2 mb-6 md:grid-cols-2">
   <div class="field">
       <%= f.label :location, class:"block mb-2 text-sm font-medium text-gray-900 capitalize" %>
-      <%= f.select :location, Appointment.locations.keys.map { |l| [l.humanize, l] }, { prompt: "Select a Location" },  { class:"bg-gray-50 border border-gray-300 text-gray-900 text-sm capitalize rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" } %>
+      <%= f.select :location, Appointment.locations.keys.map { |l| [l.humanize, l] }, { prompt: "Select a Location" },  { class:"bg-gray-50 border border-gray-300 text-gray-900 text-sm capitalize rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5", maxlength: 55 } %>
   </div>
   <div class="field">
       <%= f.label :status, class:"block mb-2 text-sm font-medium text-gray-900 capitalize" %>
-      <%= f.select :status, Appointment.statuses.keys.map { |s| [s.humanize, s] }, { prompt: "Select Status" }, { class:"bg-gray-50 border border-gray-300 text-gray-900 text-sm capitalize rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" } %>
+      <%= f.select :status, Appointment.statuses.keys.map { |s| [s.humanize, s] }, { prompt: "Select Status" }, { class:"bg-gray-50 border border-gray-300 text-gray-900 text-sm capitalize rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5", maxlength: 55 } %>
   </div>
 </div>
 
