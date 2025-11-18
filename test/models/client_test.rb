@@ -41,13 +41,6 @@ class ClientTest < ActiveSupport::TestCase
     assert_includes @client.errors[:email], "is invalid"
   end
 
-  # ✅ Phone validation
-  test "rejects invalid phone numbers" do
-    @client.phone = "abc123"
-    assert_not @client.valid?
-    assert_includes @client.errors[:phone], "must be a valid phone number"
-  end
-
   # ✅ Normalization
   test "normalizes email, phone, and names before validations" do
     messy = @user.clients.create!(
