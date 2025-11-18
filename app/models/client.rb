@@ -18,7 +18,7 @@ class Client < ApplicationRecord
   end
 
   def normalize_phone
-    self.phone = self.phone = phone.gsub(/[^0-9+]/, "") if phone.present?
+    self.phone = phone.gsub(/[^0-9+]/, "") if phone.present?
   end
 
   def normalize_names
