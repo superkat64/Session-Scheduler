@@ -1,11 +1,23 @@
-<%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
-<%= tag.div(flash[:notice], style: "color:green") if flash[:notice] %>
+<%# app/views/sessions/new.html.erb %>
+<div class="flex flex-col relative w-fit mx-auto mt-8">
+  <div class="flex justify-between items-center mb-6">
+    <h1 class="text-5xl">Sign In</h1>
+  </div>
+  
+  <%= tag.div(flash[:alert], style: "color:red", class: "mb-4") if flash[:alert] %>
 
-<%= form_with url: session_path do |form| %>
-  <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address] %><br>
-  <%= form.password_field :password, required: true, autocomplete: "current-password", placeholder: "Enter your password", maxlength: 72 %><br>
-  <%= form.submit "Sign in" %>
-<% end %>
-<br>
-
-<%= link_to "Forgot password?", new_password_path %>
+  <%= form_with url: session_path do |f| %>
+    <div class="field mb-6">
+      <%= f.label :email_address, class: "block mb-2 text-sm font-medium text-gray-900 capitalize" %>
+      <%= f.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address], class:"bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" %>
+    </div>
+    <div class="field mb-6">
+      <%= f.label :password, class: "block mb-2 text-sm font-medium text-gray-900 capitalize" %>
+      <%= f.password_field :password, required: true, autocomplete: "current-password", placeholder: "Enter your password", maxlength: 72, class:"bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" %>
+    </div>
+    <div class="actions">
+      <%= f.submit "Sign in", class: "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center cursor-pointer"%>
+      <%= link_to "Forgot password?", new_password_path, class: "min-w-24 font-medium rounded-lg border-1 border-slate-200 text-sm px-5 py-2.5 ml-4 justify-center text-center inline-flex items-center rounded-md hover:bg-slate-100" %>
+    </div>
+  <% end %>
+</div>
