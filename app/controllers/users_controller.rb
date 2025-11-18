@@ -8,13 +8,15 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    puts @user
-    if @user.save!
+    if @user.save
       start_new_session_for @user
-      redirect_to after_authentication_url
+      redirect_to root_path, notice: "Account created successfully."
     else
-      render new_user_path, status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
+  rescue ActiveRecord::RecordNotUnique
+    @user.errors.add(:email_address, "has already been taken")
+    render :new, status: :unprocessable_entity
   end
 
   private

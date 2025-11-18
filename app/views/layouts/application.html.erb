@@ -32,7 +32,7 @@
         <% end %>
         <div class="hidden w-full md:block md:w-auto" id="navbar-default">
           <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-default rounded-base bg-neutral-secondary-soft md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-neutral-primary">
-            <% if !authenticated? && !current_page?(new_session_path) %>
+            <% if !authenticated? && !current_page?(new_user_path) %>
               <li>            
                 <%= link_to "Sign Up", new_user_path, class: "inline-flex items-center text-sm font-medium text-body hover:text-fg-brand" %>
               </li>
